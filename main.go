@@ -98,4 +98,29 @@ func main() {
 	buscaVazia := &lista{}
 	iVazia, okBuscaVazia := buscaVazia.posicao(5)
 	println("posicao (lista vazia) ->", iVazia, okBuscaVazia)
+
+	testeValor := &lista{}
+	testeValor.adicionarFim(10)
+	testeValor.adicionarFim(20)
+	testeValor.adicionarFim(30)
+	testeValor.imprimir()
+
+	v0v, ok0v := testeValor.valorNaPosicao(0)
+	println("valorNaPosicao(0) ->", v0v, ok0v)
+
+	v1v, ok1v := testeValor.valorNaPosicao(1)
+	println("valorNaPosicao(1) ->", v1v, ok1v)
+
+	v2v, ok2v := testeValor.valorNaPosicao(2)
+	println("valorNaPosicao(2) ->", v2v, ok2v)
+
+	vForaLimite, okForaLimite := testeValor.valorNaPosicao(5)
+	println("valorNaPosicao(5) ->", vForaLimite, okForaLimite)
+
+	vNegativa, okNegativaV := testeValor.valorNaPosicao(-1)
+	println("valorNaPosicao(-1) ->", vNegativa, okNegativaV)
+
+	valorVazia := &lista{}
+	vVaziaV, okVaziaV := valorVazia.valorNaPosicao(0)
+	println("valorNaPosicao (lista vazia) ->", vVaziaV, okVaziaV)
 }
