@@ -9,14 +9,12 @@ type lista struct {
 	inicio *no
 }
 
-// adicionarInicio insere um novo nó no início da lista — O(1)
 func (l *lista) adicionarInicio(valor int) {
 	novo := &no{valor: valor}
 	novo.proximo = l.inicio
 	l.inicio = novo
 }
 
-// adicionarFim insere um novo nó no final da lista — O(n)
 func (l *lista) adicionarFim(valor int) {
 	novo := &no{valor: valor}
 
@@ -32,7 +30,6 @@ func (l *lista) adicionarFim(valor int) {
 	atual.proximo = novo
 }
 
-// imprimir exibe a lista no formato "10 -> 20 -> 30 -> nil"
 func (l *lista) imprimir() {
 	atual := l.inicio
 	for atual != nil {
@@ -40,4 +37,33 @@ func (l *lista) imprimir() {
 		atual = atual.proximo
 	}
 	println("nil")
+}
+func (l *lista) adicionarPosicao(valor, posicao int) bool {
+	if posicao < 0 {
+		return false
+	}
+
+	novo := &no{valor: valor}
+
+	if posicao == 0 {
+		novo.proximo = l.inicio
+		l.inicio = novo
+		return true
+	}
+
+	anterior := l.inicio
+	for i := 0; i < posicao-1; i++ {
+		if anterior == nil {
+			return false
+		}
+		anterior = anterior.proximo
+	}
+
+	if anterior == nil {
+		return false
+	}
+
+	novo.proximo = anterior.proximo
+	anterior.proximo = novo
+	return true
 }
