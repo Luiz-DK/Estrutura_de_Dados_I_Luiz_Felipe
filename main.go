@@ -76,4 +76,26 @@ func main() {
 	vaziaPos := &lista{}
 	vVazia, okVaziaPos := vaziaPos.removerPosicao(0)
 	println("removerPosicao (lista vazia) ->", vVazia, okVaziaPos)
+
+	testeBusca := &lista{}
+	testeBusca.adicionarFim(10)
+	testeBusca.adicionarFim(20)
+	testeBusca.adicionarFim(30)
+	testeBusca.imprimir()
+
+	iInicio, okInicio := testeBusca.posicao(10)
+	println("posicao(10) ->", iInicio, okInicio)
+
+	iMeio, okMeio := testeBusca.posicao(20)
+	println("posicao(20) ->", iMeio, okMeio)
+
+	iFim, okFimBusca := testeBusca.posicao(30)
+	println("posicao(30) ->", iFim, okFimBusca)
+
+	iInexistente, okInexistente := testeBusca.posicao(99)
+	println("posicao(99) ->", iInexistente, okInexistente)
+
+	buscaVazia := &lista{}
+	iVazia, okBuscaVazia := buscaVazia.posicao(5)
+	println("posicao (lista vazia) ->", iVazia, okBuscaVazia)
 }
