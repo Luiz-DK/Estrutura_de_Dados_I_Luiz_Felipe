@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type no struct {
 	valor   int
 	proximo *no
@@ -149,11 +151,21 @@ func (l *lista) valorNaPosicao(posicaoProcurada int) (int, bool) {
 	return 0, false
 }
 
+func (l *lista) tamanho() int {
+	contador := 0
+	atual := l.inicio
+	for atual != nil {
+		contador++
+		atual = atual.proximo
+	}
+	return contador
+}
+
 func (l *lista) imprimir() {
 	atual := l.inicio
 	for atual != nil {
-		print(atual.valor, " -> ")
+		fmt.Printf("%d -> ", atual.valor)
 		atual = atual.proximo
 	}
-	println("nil")
+	fmt.Println("nil")
 }
