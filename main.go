@@ -27,4 +27,24 @@ func main() {
 
 	okNegativa := l.adicionarPosicao(99, -1)
 	println("posição negativa (-1):", okNegativa)
+
+	valorIni, okIni := l.removerInicio()
+	println("removerInicio ->", valorIni, okIni)
+	l.imprimir()
+
+	valorFim, okFim2 := l.removerFim()
+	println("removerFim ->", valorFim, okFim2)
+	l.imprimir()
+
+	unica := &lista{}
+	unica.adicionarInicio(7)
+	v, ok := unica.removerFim()
+	println("removerFim (lista com 1 elemento) ->", v, ok)
+	unica.imprimir()
+
+	vazia := &lista{}
+	vIni, okVazia1 := vazia.removerInicio()
+	println("removerInicio (lista vazia) ->", vIni, okVazia1)
+	vFim, okVazia2 := vazia.removerFim()
+	println("removerFim (lista vazia) ->", vFim, okVazia2)
 }

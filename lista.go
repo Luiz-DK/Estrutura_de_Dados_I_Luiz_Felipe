@@ -30,14 +30,6 @@ func (l *lista) adicionarFim(valor int) {
 	atual.proximo = novo
 }
 
-func (l *lista) imprimir() {
-	atual := l.inicio
-	for atual != nil {
-		print(atual.valor, " -> ")
-		atual = atual.proximo
-	}
-	println("nil")
-}
 func (l *lista) adicionarPosicao(valor, posicao int) bool {
 	if posicao < 0 {
 		return false
@@ -66,4 +58,44 @@ func (l *lista) adicionarPosicao(valor, posicao int) bool {
 	novo.proximo = anterior.proximo
 	anterior.proximo = novo
 	return true
+}
+
+func (l *lista) removerInicio() (int, bool) {
+	if l.inicio == nil {
+		return 0, false
+	}
+
+	valor := l.inicio.valor
+	l.inicio = l.inicio.proximo
+	return valor, true
+}
+
+func (l *lista) removerFim() (int, bool) {
+	if l.inicio == nil {
+		return 0, false
+	}
+
+	if l.inicio.proximo == nil {
+		valor := l.inicio.valor
+		l.inicio = nil
+		return valor, true
+	}
+
+	anterior := l.inicio
+	for anterior.proximo.proximo != nil {
+		anterior = anterior.proximo
+	}
+
+	valor := anterior.proximo.valor
+	anterior.proximo = nil
+	return valor, true
+}
+
+func (l *lista) imprimir() {
+	atual := l.inicio
+	for atual != nil {
+		print(atual.valor, " -> ")
+		atual = atual.proximo
+	}
+	println("nil")
 }
