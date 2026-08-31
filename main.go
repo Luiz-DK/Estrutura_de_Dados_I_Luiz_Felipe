@@ -47,4 +47,33 @@ func main() {
 	println("removerInicio (lista vazia) ->", vIni, okVazia1)
 	vFim, okVazia2 := vazia.removerFim()
 	println("removerFim (lista vazia) ->", vFim, okVazia2)
+
+	testePos := &lista{}
+	testePos.adicionarFim(10)
+	testePos.adicionarFim(20)
+	testePos.adicionarFim(30)
+	testePos.adicionarFim(40)
+	testePos.imprimir()
+
+	v0, ok0 := testePos.removerPosicao(0)
+	println("removerPosicao(0) ->", v0, ok0)
+	testePos.imprimir()
+
+	v1, ok1 := testePos.removerPosicao(1)
+	println("removerPosicao(1) ->", v1, ok1)
+	testePos.imprimir()
+
+	vUlt, okUlt := testePos.removerPosicao(1)
+	println("removerPosicao(fim) ->", vUlt, okUlt)
+	testePos.imprimir()
+
+	vInv, okInv := testePos.removerPosicao(10)
+	println("removerPosicao(inválida) ->", vInv, okInv)
+
+	vNeg, okNeg := testePos.removerPosicao(-1)
+	println("removerPosicao(negativa) ->", vNeg, okNeg)
+
+	vaziaPos := &lista{}
+	vVazia, okVaziaPos := vaziaPos.removerPosicao(0)
+	println("removerPosicao (lista vazia) ->", vVazia, okVaziaPos)
 }
